@@ -1,5 +1,7 @@
 package com.jsp.Hibernet_Case_Study.one.productdoa;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
@@ -43,7 +45,7 @@ public class CartDoa {
 
         if (cartDetails != null) {
             for (Product product : cartDetails.getpList()) {
-                System.out.println("Product Name: " + product.getProductId()+"Product Name: " + product.getProductName()+"Product Price: " + product.getProductPrice()+"Quantity: " + product.getProductQuantity());
+                System.out.println("Product ID: " + product.getProductId()+"Product Name: " + product.getProductName()+"Product Price: " + product.getProductPrice()+"Quantity: " + product.getProductQuantity());
             }
         } 
     else{
@@ -81,7 +83,6 @@ public class CartDoa {
     public void removeProductFromCart(int cId, int productId) {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
-
         Cart cart = session.get(Cart.class, cId); 
 
         if (cart != null) {
@@ -100,6 +101,14 @@ public class CartDoa {
             System.out.println("Cart with ID " + cId + " not found.");
         }
     }
+
+	public List<Product> cheakoutCart(int cartId) {
+		  Session session = sf.openSession();
+	        Transaction transaction = session.beginTransaction();
+	        Cart cart = session.get(Cart.class, cartId);
+	        List<Product> getpList = cart.getpList();
+	        return getpList;
+	}
 
 
 }

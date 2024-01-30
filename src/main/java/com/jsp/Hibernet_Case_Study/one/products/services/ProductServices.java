@@ -12,7 +12,7 @@ public class ProductServices {
 
 	public static void addProduct() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("ENter how many product added");
+		System.out.println("Enter how many product added");
 		int n=input.nextInt();
 		for(int i=1;i<=n;i++) {
 		System.out.println("Enter the product name");
@@ -51,8 +51,8 @@ public class ProductServices {
 		List<Product> result = productDao.allProducts();
 		if(result!=null) {
 		for (Product p : result)
-			System.out.println(p.getProductId() + " " + p.getProductName() + " " + p.getProductPrice() + " "
-					+ p.getProductQuantity());
+			System.out.println("ProductID:"+ p.getProductId() + " "+"ProductName:"+ p.getProductName() + " "+ "ProductPrice:"+ p.getProductPrice() + " "
+					+"ProductQuantity:"+ p.getProductQuantity());
 		}
 		else {
 			System.out.println("Products is not found");

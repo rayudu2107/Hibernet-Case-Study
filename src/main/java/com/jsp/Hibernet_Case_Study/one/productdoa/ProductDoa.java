@@ -45,7 +45,7 @@ public class ProductDoa {
 	public String updateProduct(Product product) {
 		Session session = sf.openSession();
 		Transaction transaction = session.beginTransaction();
-		session.update(product);
+		session.merge(product);
 		transaction.commit();
 		sf.close();
 		return "Product  sucessfully updated";
